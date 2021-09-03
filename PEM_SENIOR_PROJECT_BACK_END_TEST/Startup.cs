@@ -1,3 +1,8 @@
+/*
+ Startup acts as the Dependency Injection Kontainer DI
+ 
+ */
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -21,6 +26,7 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        // This is the Dependency Injection kontainer- Miguel Alonso comment
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
@@ -34,20 +40,24 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST
                 app.UseDeveloperExceptionPage();
             }
             else
-            {
-                app.UseExceptionHandler("/Home/Error");
+            {//Home refers to the kontroller not the view.Error to the Aktion result Miguel Alonso 
+                app.UseExceptionHandler("/Home/Error");//Kontroller/Aktion
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles();//uses wwwroot folder from project
 
-            app.UseRouting();
+            app.UseRouting();//since this project is MVC the routing used is MVC routing
+            //if the project was Razor Pages, that would've been the routing used, and so on and so forth
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+               //This means, that by default, if the kontroller is home, by default the index.
+               //Also, is the home is ommited, the default is still index
+               //the question mark next to id, means id is optional
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
