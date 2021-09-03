@@ -6,9 +6,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;//this allows me to call UseSqlSever when configuring the database
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PEM_SENIOR_PROJECT_BACK_END_TEST.Data;//so I can use my PEM DBContext class
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,9 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST
         // This is the Dependency Injection kontainer- Miguel Alonso comment
         public void ConfigureServices(IServiceCollection services)
         {
+            //below the sql server connection for PEM is setup
+            services.AddDbContext<PEM_APP_DBContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
         }
 
