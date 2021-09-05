@@ -1,7 +1,63 @@
-﻿
-@{
-    ViewData["Title"] = "Kategories";
-}
+﻿@model IEnumerable<MainCategory>
+<!-- The MainCategory aboved is wrapped in an IEnumerable so it can get extension methods
+        like the .Count() below. This is needed so the foreach loops work since they need IEnumerable
+        variables to iterate throgh them
+        ServVM.Service.ImageUrl = @"\images\services\" + fileName + extension;
 
-<h1>Kategories</h1>
+\images\foreing_ingestion.jpg
 
+\images\medical.jpg
+
+\images\surgical.jpg
+
+\images\toxicology.jpg
+
+\images\trauma.jpg
+
+\images\goku.jpg
+\images\vegeta.jpg
+\images\buu.jpg
+        -->
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">PEM Kategories</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Categories" asp-action="Create" class="btn btn-primary">Create new Kategory</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.Count() > 0)
+    {
+        @foreach (var kat in Model)
+        {
+
+            <div class="col-lg-6 col-xl-6 col-md-6 pb-4 mx-auto">
+                <div class="card " style="border:2px solid #43ac6a;border-radius:5px; background:url('/images/medical_pattern.png')">
+                    <div class="pl-3 pt-1 text-center">
+                        <h3 class="card-title text-primary"><b>@kat.CategoryName</b></h3>
+                    </div>
+                    <div class="d-flex justify-content-between ">
+                        <div class="pl-1 text-muted">Label for more can go here</div>
+                        <div class="pr-1 text-danger h5">more can go here</div>
+                        <div class="pr-1 text-danger h5">ID: @kat.Id</div>
+                    </div>
+                    <img src="@kat.ImageUrl" class="card-img-top p-2 rounded" width="500" height="300" sstyle="opacity: 1.0" />
+
+                    <div class="text-muted text-center pb-2">Description goes here</div>
+                    <a asp-action="Details" asp-route-id="@kat.Id" class="btn btn-success" style="border-radius:2px;">Subcategories</a>
+                </div>
+            </div>
+
+        }
+
+    }
+    else
+    {
+        <p>No items created yet</p>
+    }
+</div>
