@@ -21,10 +21,13 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Models
         public int Id { get; set; }//primary key. A sequence is created and incremented by default
 
         [DisplayName("Category Name")]
+        [Required(ErrorMessage ="Kategory can't be empty, boi!")]
+        //[StringLength(100)]
         public string CategoryName { get; set; }
 
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Image Link")]//this makes this field Image Link instead of ImageUrl when used in html
+        [Required(ErrorMessage ="An Image Url is required, boi!")]
         public string ImageUrl { get; set; }
     }
 }

@@ -1,16 +1,12 @@
 ﻿@model MainCategory
-
 <!-- the asp-action Create below refers to teh POST version of the Create controller
         -->
-<form method="post" asp-action="Create">
+<form method="post" asp-action="Update">
+    <input asp-for="Id" hidden />
     <div class="border p-3">
-        <!--SERVER SIDE validations
-            validation summary when set to model only, shows msgs at the model level only, i.e, right on each field
-            with the span tags.when set to ALL, it shows at model levels(each field)as well as at the top a la Web-RS in APEX
-    -->
         <div asp-validation-summary="All"></div>
         <div class="form-group row">
-            <h2 class="text-black-50 pl-3">Add Main Category</h2>
+            <h2 class="text-black-50 pl-3">Update Main Category</h2>
         </div>
         <div class="row">
             <div class="col-12">
@@ -35,10 +31,10 @@
                 <div class="form-group row">
                     <div class="col-8 mx-auto row">
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-75" value="create" />
+                            <input type="submit" class="btn btn-success w-75" value="Update" />
                         </div>
                         <div class="col">
-                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                            <a asp-action="Index" class="btn btn-dark w-75">Back</a>
                         </div>
                     </div>
                 </div>
@@ -48,6 +44,8 @@
     </div>
 </form>
 
-@section Scripts{ 
-@{ <partial name="_ValidationScriptsPartial"/>}
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
 }

@@ -1,8 +1,6 @@
 ﻿/*
  * This class has to be created by user manually
- 
  */
-
 using Microsoft.EntityFrameworkCore;
 using PEM_SENIOR_PROJECT_BACK_END_TEST.Models;
 using System;
@@ -20,5 +18,6 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Data
         }
 
         public DbSet<MainCategory> MainCategories { get; set; }//this becomes a SQL server database table
+        public DbSet<Subcategory> SubCategories { get; set; }//this becomes a SQL server database table
     }
 }

@@ -43,17 +43,100 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
         //GET-Create
         public IActionResult Create()
         {
-            return View();
+            return View();//returns the HTML form
+            //return Ok("yo!");
         }
 
         //POST-Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(MainCategory obj)
+        public IActionResult Create(MainCategory obj)//obj comes form the HTML form
         {
+           if (!ModelState.IsValid)
+            {
+               return View(obj);//basically returns to the same page with the same object to display the error msgs
+            }
+
             _db.MainCategories.Add(obj);
             _db.SaveChanges();
            return RedirectToAction("Index");//to the Index in Categories since this controller is in Categories
         }
+
+        //GET-Delete
+        public IActionResult Delete(int? id)//obj comes form the HTML form
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.MainCategories.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+
+            //_db.MainCategories.Remove(obj);
+            //_db.SaveChanges();
+            //return RedirectToAction("Index");
+        }
+
+        //POST-Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)//obj comes form the HTML form
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.MainCategories.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            _db.MainCategories.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");//to the Index in Categories since this controller is in Categories
+        }
+
+        //GET-Update
+        public IActionResult Update(int? id)//obj comes form the HTML form
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.MainCategories.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        //POST-Update
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(MainCategory obj)//obj comes form the HTML form
+        {
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            _db.MainCategories.Update(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");//to the Index in Categories since this controller is in Categories
+        }
+
     }
 }
