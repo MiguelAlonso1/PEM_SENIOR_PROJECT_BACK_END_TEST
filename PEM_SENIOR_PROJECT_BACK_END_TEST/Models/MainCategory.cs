@@ -25,6 +25,11 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Models
         //[StringLength(100)]
         public string CategoryName { get; set; }
 
+        [DisplayName("Category Description")]
+        [Required(ErrorMessage = "Kategory description can't be empty, boi!")]
+        //[StringLength(100)]
+        public string CategoryDescription { get; set; }
+
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Image Link")]//this makes this field Image Link instead of ImageUrl when used in html
         [Required(ErrorMessage ="An Image Url is required, boi!")]

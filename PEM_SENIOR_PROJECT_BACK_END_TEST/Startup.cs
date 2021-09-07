@@ -65,7 +65,7 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST
                //the question mark next to id, means id is optional
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Categories}/{action=Index}/{id?}");
             });
         }
     }

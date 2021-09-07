@@ -18,6 +18,8 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
         }
         public IActionResult Index(int id)
         {
+           //I get here by clicking on the green buttoms subcategories on each card item on the index on categories
+           //the id for maincategories is passed and is used in the query to get all items with that foreing key
             IEnumerable<Subcategory> subKategoryList = _db.SubCategories.Where(t=> t.MainCategoryId == id);
             return View(subKategoryList);//this parameter is treated as the model for Razor synthax
 
@@ -28,6 +30,9 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
 
         public IActionResult Details(int id)
         {
+            Subcategory subKategoryObj = _db.SubCategories.Find(id);
+            return View(subKategoryObj);//this parameter is treated as the model for Razor synthax
+
             // return View();
 
             //below if for testing if the kontroller works and returns something

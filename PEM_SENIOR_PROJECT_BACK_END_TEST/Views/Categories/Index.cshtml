@@ -47,10 +47,23 @@
                     </div>
                     <img src="@kat.ImageUrl" class="card-img-top p-2 rounded" width="500" height="300" sstyle="opacity: 1.0" />
 
-                    <div class="text-muted text-center pb-2">Description goes here</div>
+                    <a class="btn  btn-outline-dark text-muted text-center pb-2" data-toggle="collapse" href="#collapseDescription_@kat.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Description >
+                    </a>
+                    <!--Evaluation secion here -->
+                    <div class="text-muted text-left pb-3">
+                        <div class="collapse" id="collapseDescription_@kat.Id">
+                            <div class="card card-body">
+                                <p>@kat.CategoryDescription</p>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <a asp-controller="Subcategories" asp-action="Index" asp-route-id="@kat.Id" class="btn btn-success" style="border-radius:2px;">Subcategories</a>
                 </div>
             </div>
+    
 
         }
 
