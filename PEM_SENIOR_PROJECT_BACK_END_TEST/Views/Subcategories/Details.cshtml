@@ -11,87 +11,87 @@
             <a asp-controller="SubCategories" asp-action="Index" asp-route-id="@Model.MainCategoryId" class="btn btn-dark  mx-1">Back</a>
         </div>
     </div>
-</div>
+</div>  
+
 <div class="row">
-  
-            <div class="col-lg-6 col-xl-9 col-md-6 pb-4 mx-auto">
-                <div class="card " style="border:2px solid #43ac6a;border-radius:5px; background:url('/images/medical_pattern.png')">
-                    <div class="pl-3 pt-1 text-center">
-                        <h3 class="card-title text-primary"><b>@Model.Title</b></h3>
+    <div class="col-lg-6 col-xl-9 col-md-6 pb-4 mx-auto">
+        <div class="card " style="border:2px solid #43ac6a;border-radius:5px; background:url('/images/medical_pattern.png')">
+            <div class="pl-3 pt-1 text-center">
+                <h3 class="card-title text-primary"><b>@Model.Title</b></h3>
+            </div>
+            <div class="d-flex justify-content-between ">
+                <div class="pl-2"><a asp-controller="Subcategories" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary">Update</a></div>
+                <div class="pr-2 text-danger h5"><b>ID: @Model.Id</b></div>
+                <div class="pr-2 h5"><a asp-controller="Subcategories" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a></div>
+            </div>
+            <img src="@Model.ImageUrl" class="card-img-top p-2 rounded" width="500" height="500" sstyle="opacity: 1.0" />
+
+            <div class="w-100 btn-group" role="group">
+                <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseExample_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Evaluation  >
+                </a>
+                <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseMedications_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Medications >
+                </a>
+                <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseManagement_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Management >
+                </a>
+                <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseSymptoms_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Symptoms >
+                </a>
+                <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseReferences_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    References >
+                </a>
+            </div>
+
+            <!--Evaluation secion here -->
+            <div class="text-muted text-left pb-3">
+                <div class="collapse" id="collapseExample_@Model.Id">
+                    <div class="card card-body">
+                        <p><b>Evaluation</b><br />@Model.Evaluation</p>
                     </div>
-                    <div class="d-flex justify-content-between ">
-                        <div class="pl-2"><a asp-controller="Categories" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary">Update</a></div>
-                        <div class="pr-2 text-danger h5"><b>ID: @Model.Id</b></div>
-                        <div class="pr-2 h5"><a asp-controller="Categories" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a></div>
-                    </div>
-                    <img src="@Model.ImageUrl" class="card-img-top p-2 rounded" width="500" height="500" sstyle="opacity: 1.0" />
-
-                    <div class="w-100 btn-group" role="group">
-                        <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseExample_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Evaluation  >
-                        </a>
-                        <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseMedications_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Medications >
-                        </a>
-                        <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseManagement_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Management >
-                        </a>
-                        <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseSymptoms_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Symptoms >
-                        </a>
-                        <a class="btn  btn-outline-dark" data-toggle="collapse" href="#collapseReferences_@Model.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            References >
-                        </a>
-                    </div>
-
-                    <!--Evaluation secion here -->
-                    <div class="text-muted text-left pb-3">
-                        <div class="collapse" id="collapseExample_@Model.Id">
-                            <div class="card card-body">
-                                <p><b>Evaluation</b><br />@Model.Evaluation</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Medications secion here -->
-                    <div class="text-muted text-left pb-2">
-                        <div class="collapse" id="collapseMedications_@Model.Id">
-                            <div class="card card-body">
-                                <p><b>Medications</b><br />@Model.Medications</p>
-                            </div>
-                        </div>
-                    </div>
-                    @*Management secion here*@
-                    <div class="text-muted text-left pb-3">
-                        <div class="collapse" id="collapseManagement_@Model.Id">
-                            <div class="card card-body">
-                                <p><b>Management</b><br />@Model.Management</p>
-                            </div>
-                        </div>
-                    </div>
-                    @*Sypmtoms secion here*@
-                    <div class="text-muted text-left pb-3">
-
-                        <div class="collapse" id="collapseSymptoms_@Model.Id">
-                            <div class="card card-body">
-                                <p><b>Symptoms</b><br />@Model.Symptoms</p>
-                            </div>
-                        </div>
-                    </div>
-                    @*References secion here*@
-                    <div class="text-muted text-left pb-3">
-
-
-                        <div class="collapse" id="collapseReferences_@Model.Id">
-                            <div class="card card-body">
-                                <p><b>References</b><br />@Model.References</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
                 </div>
             </div>
-  
+
+            <!--Medications secion here -->
+            <div class="text-muted text-left pb-2">
+                <div class="collapse" id="collapseMedications_@Model.Id">
+                    <div class="card card-body">
+                        <p><b>Medications</b><br />@Model.Medications</p>
+                    </div>
+                </div>
+            </div>
+            @*Management secion here*@
+            <div class="text-muted text-left pb-3">
+                <div class="collapse" id="collapseManagement_@Model.Id">
+                    <div class="card card-body">
+                        <p><b>Management</b><br />@Model.Management</p>
+                    </div>
+                </div>
+            </div>
+            @*Sypmtoms secion here*@
+            <div class="text-muted text-left pb-3">
+
+                <div class="collapse" id="collapseSymptoms_@Model.Id">
+                    <div class="card card-body">
+                        <p><b>Symptoms</b><br />@Model.Symptoms</p>
+                    </div>
+                </div>
+            </div>
+            @*References secion here*@
+            <div class="text-muted text-left pb-3">
+
+
+                <div class="collapse" id="collapseReferences_@Model.Id">
+                    <div class="card card-body">
+                        <p><b>References</b><br />@Model.References</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
 </div>

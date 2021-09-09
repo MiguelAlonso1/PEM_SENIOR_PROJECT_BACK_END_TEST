@@ -1,18 +1,18 @@
-﻿@model MainCategory
+﻿@model Subcategory
 <!-- the asp-action Create below refers to teh POST version of the Create controller
-        -->
+ -->
 <form method="post" asp-action="Update">
     <input asp-for="Id" hidden />
     <div class="border p-3">
         <div asp-validation-summary="All"></div>
         <div class="form-group row">
-            <h2 class="text-black-50 pl-3">Update Main Category</h2>
+            <h2 class="text-black-50 pl-3">Update <strong>@Model.Title</strong> Subcategory</h2>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="form-group row">
                     <div class="col-6">
-                        <label asp-for="CategoryName"></label>
+                        <label asp-for="Title"></label>
                     </div>
                     <div class="col-6">
                         <label asp-for="ImageUrl"></label>
@@ -20,21 +20,83 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-6">
-                        <input asp-for="CategoryName" class="form-control" />
-                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                     <div class="col-6">
                         <input asp-for="ImageUrl" class="form-control" />
                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
                     </div>
                 </div>
+                <!-- Evaluation and medications  -->
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Evaluation"></label>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Medications"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <textarea asp-for="Evaluation" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="Evaluation" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <textarea asp-for="Medications" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="Medications" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Mangement and symptoms  -->
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Management"></label>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Symptoms"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <textarea asp-for="Management" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="Management" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <textarea asp-for="Symptoms" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="Symptoms" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- References and Main Category(disabled on Update)  -->
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="References"></label>
+                    </div>
+                    <div class="col-6">
+                        <!--this one is visible on the C# class model for Subcategory but not on the Sql table-->
+                        <label asp-for="MainCategoryId" class="text-info"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <textarea asp-for="References" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="References" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <select asp-for="MainCategoryId" asp-items="@ViewBag.MainKategorySelectList" class="form-control text-info">
+                        </select>
+                        <span asp-validation-for="MainCategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- Update and go back buttons  -->
                 <div class="form-group row">
                     <div class="col-8 mx-auto row">
                         <div class="col">
                             <input type="submit" class="btn btn-success w-75" value="Update" />
                         </div>
                         <div class="col">
-                            <a asp-action="Index" class="btn btn-dark w-75">Back</a>
+                            <a asp-controller="Subcategories" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-dark w-75">Back</a>
                         </div>
                     </div>
                 </div>

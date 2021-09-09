@@ -1,22 +1,20 @@
-﻿@model MainCategory
-
+﻿@model Subcategory
 <!-- the asp-action Create below refers to teh POST version of the Create controller
-        -->
+ -->
 <form method="post" asp-action="Create">
     <div class="border p-3">
-        <!--SERVER SIDE validations
-            validation summary when set to model only, shows msgs at the model level only, i.e, right on each field
-            with the span tags.when set to ALL, it shows at model levels(each field)as well as at the top a la Web-RS in APEX
-    -->
         <div asp-validation-summary="All"></div>
         <div class="form-group row">
-            <h2 class="text-black-50 pl-3">Add Main Category</h2>
+            <h2 class="text-black-50 pl-3">Create new Subcategory</h2>
+        </div>
+        <div class="form-group row">
+            <p class="text-info pl-3">You may create a new Sub Category of any Main Category</p>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="form-group row">
                     <div class="col-6">
-                        <label asp-for="CategoryName"></label>
+                        <label asp-for="Title"></label>
                     </div>
                     <div class="col-6">
                         <label asp-for="ImageUrl"></label>
@@ -24,21 +22,84 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-6">
-                        <input asp-for="CategoryName" class="form-control" />
-                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                     <div class="col-6">
                         <input asp-for="ImageUrl" class="form-control" />
                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
                     </div>
                 </div>
+                <!-- Evaluation and medications  -->
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Evaluation"></label>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Medications"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <textarea asp-for="Evaluation" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="Evaluation" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <textarea asp-for="Medications" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="Medications" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Mangement and symptoms  -->
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Management"></label>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Symptoms"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <textarea asp-for="Management" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="Management" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <textarea asp-for="Symptoms" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="Symptoms" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- References and Main Category(disabled on Update)  -->
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="References"></label>
+                    </div>
+                    <div class="col-6">
+                        <!--this one is visible on the C# class model for Subcategory but not on the Sql table-->
+                        <label asp-for="MainCategoryId"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <textarea asp-for="References" rows="4" cols="55" class="form-control"></textarea>
+                        <span asp-validation-for="References" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <select asp-for="MainCategoryId" asp-items="@ViewBag.MainKategoryListOfNames" class="form-control">
+                        <option selected>--select main  category</option>
+                        </select>
+                        <span asp-validation-for="MainCategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- Update and go back buttons  -->
                 <div class="form-group row">
                     <div class="col-8 mx-auto row">
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-75" value="create" />
+                            <input type="submit" class="btn btn-success w-75" value="Create" />
                         </div>
                         <div class="col">
-                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                            <a asp-controller="Categories" asp-action="Index" class="btn btn-dark w-75">Back</a>
                         </div>
                     </div>
                 </div>
@@ -48,6 +109,8 @@
     </div>
 </form>
 
-@section Scripts{ 
-@{ <partial name="_ValidationScriptsPartial"/>}
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
 }

@@ -25,11 +25,19 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
         public IActionResult Index()
         {
             IEnumerable<MainCategory> kategoryList = _db.MainCategories;
+            IEnumerable<Subcategory> subcategoryList = _db.SubCategories;
+            ViewBag.subCatList = subcategoryList;
             return View(kategoryList);//this parameter is treated as the model for Razor synthax
-
+         
             //below if for testing if the kontroller works and returns something
             //string todaysDate = DateTime.Now.ToShortDateString();
             //return Ok(todaysDate);
+        }
+
+        public IActionResult Table()
+        {
+
+            return View();
         }
 
         public IActionResult Details(int id)
