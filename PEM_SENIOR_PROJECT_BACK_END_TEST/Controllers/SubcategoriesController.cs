@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿/*This class should implement ViewModels (like services classes)
+ decided to not implemented in this project to keep it simple for studying purposes
+ */
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;//for SelectListItem for the drop-down-list for the Foreingkey
 using PEM_SENIOR_PROJECT_BACK_END_TEST.Data;
 using PEM_SENIOR_PROJECT_BACK_END_TEST.Models;
@@ -29,7 +33,6 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
             //below if for testing if the kontroller works and returns something
             //string todaysDate = DateTime.Now.ToShortDateString();
             //return Ok(todaysDate);
-
         }
 
         public IActionResult Details(int id)

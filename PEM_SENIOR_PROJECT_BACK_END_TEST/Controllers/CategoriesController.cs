@@ -34,12 +34,6 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
             //return Ok(todaysDate);
         }
 
-        public IActionResult Table()
-        {
-
-            return View();
-        }
-
         public IActionResult Details(int id)
         {
            // return View();
