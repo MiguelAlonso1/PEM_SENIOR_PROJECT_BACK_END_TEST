@@ -1,6 +1,7 @@
 /*
+ * Modlog
  Startup acts as the Dependency Injection Kontainer DI
- 
+ 9/10 change database string connection from DefaultConnection to PEM_DatabaseConnection (line 37)
  */
 
 using Microsoft.AspNetCore.Builder;
@@ -33,7 +34,7 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST
         {
             //below the sql server connection for PEM is setup
             services.AddDbContext<PEM_APP_DBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("PEM_DatabaseConnection")));
             services.AddControllersWithViews();
         }
 
