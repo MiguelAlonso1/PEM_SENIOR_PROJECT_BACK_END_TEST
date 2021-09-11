@@ -22,6 +22,11 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
         {
             _db = options;
         }
+
+        public IActionResult Modal()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             IEnumerable<MainCategory> kategoryList = _db.MainCategories;
@@ -34,14 +39,6 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
             //return Ok(todaysDate);
         }
 
-        public IActionResult Details(int id)
-        {
-           // return View();
-
-            //below if for testing if the kontroller works and returns something
-            //string todaysDate = DateTime.Now.ToShortDateString();
-            return Ok($"You've enter: {id}");
-        }
         //GET-Create
         public IActionResult Create()
         {
@@ -79,11 +76,11 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
                 return NotFound();
             }
 
-            return View(obj);
+            // return View(obj);
 
-            //_db.MainCategories.Remove(obj);
-            //_db.SaveChanges();
-            //return RedirectToAction("Index");
+            _db.MainCategories.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         //POST-Delete
@@ -133,6 +130,11 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
             if (obj == null)
             {
                 return NotFound();
+            }
+            //below is needed to validate errors
+            if (!ModelState.IsValid)
+            {
+                return View(obj);//basically returns to the same page with the same object to display the error msgs
             }
 
             _db.MainCategories.Update(obj);

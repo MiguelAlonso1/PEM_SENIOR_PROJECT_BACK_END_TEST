@@ -3,10 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" />
     <title>@ViewData["Title"] - PEM_SENIOR_PROJECT_BACK_END_TEST</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/lib/Bootstrap5/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap4.min.css" />
+
+
     @*Below CSS links were added after starting the login and authentication part of the tutorial
         Select2 is a 3rd party library? that was added from the project
         it kind of was added like a NugetPackage but for 3rd party librareis for js, CSS, etc*@
@@ -59,15 +63,23 @@
             &copy; 2021 - Copyright: Paramedic Emergency Application
         </div>
     </footer>
+
+    @*below jquery script is needed for client side validations
+        if commneted out or not included, validation will take place on the back-end*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>*@
+    @*I upgraded to bootstrap manually :)*@
+    <script src="~/lib/Bootstrap5/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @*Below for datatables*@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js"></script>
 
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>*@
     @*Below scripts were added after starting the login and authentication part of the tutorial
-    Select2 is a 3rd party library? that was added from the project
-    it kind of was added like a NugetPackage but for 3rd party librareis for js, CSS, etc*@
+        Select2 is a 3rd party library? that was added from the project
+        it kind of was added like a NugetPackage but for 3rd party librareis for js, CSS, etc*@
 
     <script type="text/javascript" src="~/lib/select2/js/select2.full.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -76,7 +88,6 @@
     <script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.all.min.js"></script>
     <script type="text/javascript" src="~/js/notify.min.js"></script>
     <script src="~/js/script-custom-calendar.js"></script>
-
 
 
     @await RenderSectionAsync("Scripts", required: false)

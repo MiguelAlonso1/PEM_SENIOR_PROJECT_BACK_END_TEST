@@ -109,6 +109,9 @@
     </div>
 </form>
 
+@*below is needed to validate on the front-end
+otherwise, it'll got to the back-end and try to update being less performance*@
+
 @section Scripts{
     @{
         <partial name="_ValidationScriptsPartial" />

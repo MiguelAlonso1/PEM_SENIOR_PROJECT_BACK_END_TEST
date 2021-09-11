@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MainCategory>
+<!-- The MainCategory aboved is wrapped in an IEnumerable so it can get extension methods
+        like the .Count() below. This is needed so the foreach loops work since they need IEnumerable
+        variables to iterate throgh them
+
+\images\foreing_ingestion.jpg
+
+\images\medical.jpg
+
+\images\surgical.jpg
+
+\images\toxicology.jpg
+
+\images\trauma.jpg
+
+\images\goku.jpg
+\images\vegeta.jpg
+\images\buu.jpg
+        -->
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">PEM Kategories</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Categories" asp-action="Create" class="btn btn-primary">Create new Kategory</a>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#example">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+           
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
