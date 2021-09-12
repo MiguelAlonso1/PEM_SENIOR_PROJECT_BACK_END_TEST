@@ -165,6 +165,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Images\" />
+    <None Include="node_modules/**" />
   </ItemGroup>
 
 </Project>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PEM_SENIOR_PROJECT_BACK_END_TEST.Data;
 
 namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Migrations
 {
     [DbContext(typeof(PEM_APP_DBContext))]
-    partial class PEM_APP_DBContextModelSnapshot : ModelSnapshot
+    [Migration("20210912055222_adding name column to AspNetUsers")]
+    partial class addingnamecolumntoAspNetUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

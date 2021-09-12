@@ -1,0 +1,67 @@
+﻿@model PEM_SENIOR_PROJECT_BACK_END_TEST.Models.ViewModels.RegisterViewModel
+
+<div class="row">
+    <div class="">
+        <section id="loginform">
+            <form id="account" method="post" asp-action="Register" asp-controller="Account">
+                <h4>Create a new account.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group row">
+                    <label class="col-md-2 m-3" asp-for="Name"></label>
+                    <div class="col-md-6">
+                        <input class="form-control m-3" asp-for="Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 m-3" asp-for="Email"></label>
+                    <div class="col-md-6">
+                        <input class="form-control m-3" asp-for="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 m-3" asp-for="Password"></label>
+                    <div class="col-md-6">
+                        <input class="form-control m-3" asp-for="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 m-3" asp-for="ConfirmPassword"></label>
+                    <div class="col-md-6">
+                        <input class="form-control m-3" asp-for="ConfirmPassword" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 m-3" asp-for="RoleName"></label>
+                    <div class="col-md-6">
+                        <select class="form-control m-3" asp-for="RoleName" asp-items="@ViewBag.RoleTypes" >
+                            <option selected>---Select Role--</option>
+                        </select>
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <div class="col-6">
+                        <input type="submit" value="Register" class="btn btn-success w-25" />
+                    </div>
+                </div>
+                <p class="col-6">
+                    <a class="btn btn-info w-25 mt-3" asp-action="Login">
+                        Go back
+                    </a>
+                </p>
+            </form>
+        </section>
+    </div>
+</div>
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

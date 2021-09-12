@@ -14,7 +14,9 @@ using System.Threading.Tasks;
 namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Data
 {
     //public class PEM_APP_DBContext: DbContext//this requires using Microsoft.EntityFrameworkCore;
-    public class PEM_APP_DBContext : IdentityDbContext//this requires using Microsoft.EntityFrameworkCore;
+    //Identity user was the default. ApplicationUserAuthentication is extending IdentityUser
+    //to add more columns to the AspNetUsers table
+    public class PEM_APP_DBContext : IdentityDbContext<ApplicationUserAuthentication>//this requires using Microsoft.EntityFrameworkCore;
     {
         public PEM_APP_DBContext(DbContextOptions<PEM_APP_DBContext> options) : base(options)
         {

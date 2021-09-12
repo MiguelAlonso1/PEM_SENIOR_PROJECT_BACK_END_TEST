@@ -1,0 +1,44 @@
+﻿@*
+    For the below inject to work the Identity framework has to be registed on the Startup.cs as a service and passed the DBContext
+*@
+
+
+@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUserAuthentication> signInManager
+@if (signInManager.IsSignedIn(User))
+{
+<form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Account">
+    <ul class="nav navbar-nav">
+        <li class="nav-item text-white nav-link">
+            Hello @User.Identity.Name mamasota reeka!
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="javascript:document.getElementById('logoutForm').submit():">Logoff</a>
+        </li>
+    </ul>
+</form>
+}
+else
+{
+
+    @*HTML helpers below are old. Tag helpers are more recent*@
+    @*<ul class="nav navbar-nav">
+
+        <li>
+            @Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registeredLink" })
+        </li>
+        <li>
+            @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </li>
+    </ul>*@
+
+    //Tag helpers version below accomplished the same as the code above with HTML helpers
+
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a asp-action="Register" asp-controller="Account" class="nav-link text-white" id="registerLink">Sign Up</a>
+        </li>
+        <li class="nav-item">
+            <a asp-action="Login" asp-controller="Account" class="nav-link text-white" id="loginLink">Login</a>
+        </li>
+    </ul>
+}

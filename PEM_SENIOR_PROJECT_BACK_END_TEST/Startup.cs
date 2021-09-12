@@ -7,11 +7,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;//this allows me to call UseSqlSever when configuring the database
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PEM_SENIOR_PROJECT_BACK_END_TEST.Data;//so I can use my PEM DBContext class
+using PEM_SENIOR_PROJECT_BACK_END_TEST.Models;//for ApplicationUserAuthentication
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +38,9 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST
             services.AddDbContext<PEM_APP_DBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("PEM_DatabaseConnection")));
             services.AddControllersWithViews();
+
+            //Registering Identity login and registration service
+            services.AddIdentity<ApplicationUserAuthentication, IdentityRole>().AddEntityFrameworkStores<PEM_APP_DBContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +62,7 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST
             app.UseRouting();//since this project is MVC the routing used is MVC routing
             //if the project was Razor Pages, that would've been the routing used, and so on and so forth
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
