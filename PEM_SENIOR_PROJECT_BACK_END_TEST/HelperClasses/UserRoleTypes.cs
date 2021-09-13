@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;//for select list item
+﻿#region ::MOD LOG::
+//M.A. 9-12-21 async synthax to POST and GET Register controller
+
+#endregion
+
+using Microsoft.AspNetCore.Mvc.Rendering;//for select list item
 using System;
 using System.Collections.Generic;
 using System.Linq;

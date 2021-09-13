@@ -1,7 +1,8 @@
-﻿/*These are the kategories for the PEM app
+﻿#region ::MOD LOG::
+/*These are the kategories for the PEM app
  * Medical, Surgical, Trauma, Toxicology, Foreign Ingestion, and Emergent Rashes
- 
  */
+#endregion
 
 using Microsoft.AspNetCore.Mvc;
 using PEM_SENIOR_PROJECT_BACK_END_TEST.Data;//to use db context class
@@ -33,10 +34,11 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
             IEnumerable<Subcategory> subcategoryList = _db.SubCategories;
             ViewBag.subCatList = subcategoryList;
             return View(kategoryList);//this parameter is treated as the model for Razor synthax
-         
-            //below if for testing if the kontroller works and returns something
+
+            #region ::below if for testing if the kontroller works and returns something::
             //string todaysDate = DateTime.Now.ToShortDateString();
             //return Ok(todaysDate);
+            #endregion
         }
 
         //GET-Create
@@ -45,8 +47,10 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
             return View();//returns the HTML form
             //return Ok("yo!");
         }
-
-        //POST-Create
+        #region ::Http is Web access. Web access benefits from asynchronous programming::
+        // need to research this
+        #endregion
+        //POST-Create-always use POST for delete update and authentication for security reasons!
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(MainCategory obj)//obj comes form the HTML form
@@ -83,7 +87,7 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
             return RedirectToAction("Index");
         }
 
-        //POST-Delete
+        //POST-Delete-always use POST for delete update and authentication for security reasons!
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)//obj comes form the HTML form
@@ -122,7 +126,7 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST.Controllers
             return View(obj);
         }
 
-        //POST-Update
+        //POST-Update-always use POST for delete update and authentication for security reasons!
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(MainCategory obj)//obj comes form the HTML form

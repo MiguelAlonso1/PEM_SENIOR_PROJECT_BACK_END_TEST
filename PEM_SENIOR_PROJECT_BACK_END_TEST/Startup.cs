@@ -62,6 +62,8 @@ namespace PEM_SENIOR_PROJECT_BACK_END_TEST
             app.UseRouting();//since this project is MVC the routing used is MVC routing
             //if the project was Razor Pages, that would've been the routing used, and so on and so forth
 
+            //userAuthentication is needed. If this was missing, the navigation bar
+            //logic in _LoginPartialView.cshtml wouldn't work
             app.UseAuthentication();
             app.UseAuthorization();
 
